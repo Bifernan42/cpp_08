@@ -9,24 +9,21 @@ class IntegerNotFound : public std::exception
 		std::string msg_;
 	public:
 		IntegerNotFound(const std::string &msg) : msg_(msg) {}
-		~IntegerNotFound() throw();
+		~IntegerNotFound() throw() {}
 		const char *what() const throw() {return msg_.c_str();}
 };
 
 template <class T> int *easyfind(T c, int n)
 {
-	IntegerNotFound error("easyfind: Error: integer not found!" << std::endl;
-	for (T::iterator it = c.begin(); it != c.end(); ++it)
+	IntegerNotFound error("easyfind: Error: integer not found!");
+	typename T::iterator it = std::find(c.begin(), c.end(), n);
+	if (it == c.end())
+	   throw (error);
+	else
 	{
-		if (*it == n)
-			return (&(*it));
+	   return (&(*it));
 	}
-	throw (error);
 	return NULL;
 }
-
-
-
-
 
 #endif

@@ -1,4 +1,4 @@
-NAME = easy_find
+NAME = abomination
 SRCS = srcs/main.cpp
 OBJS = $(SRCS:.cpp=.o)
 CXX = c++
@@ -7,7 +7,7 @@ LIBDIR = lib
 LIBS = -L$(LIBDIR) -lcpplib
 
 all : $(NAME)
-
+#linking
 $(NAME) : $(OBJS)
 	$(CXX) $(CXXFLAGS) $(OBJS) $(LIBS) -o $(NAME)
 
